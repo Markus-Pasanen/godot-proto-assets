@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://shgba1h7gly7"]
+
+[ext_resource type="Script" uid="uid://dthdkxvjc0jrg" path="res://player/player.gd" id="1_tixs2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ulp21"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ulp21"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_tixs2")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ulp21")
+
+[node name="CameraRig" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.637427, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig"]
+near = 0.001
+
+[node name="RayCast3D" type="RayCast3D" parent="CameraRig/Camera3D"]
+target_position = Vector3(0, 0, -1)
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_ulp21")
